@@ -1,0 +1,32 @@
+<h1>Thanks for your order, {{customer.name}}!</h1>
+<br /><br />
+<h3 class="text-center">Order Receipt</h3>
+<hr />
+
+<p class="lead text-center">
+  Name:
+  {{customer.name}}
+  <br />
+  Email Address:
+  {{customer.email}}
+  <br />
+  Zip Code:
+  {{customer.address.postal_code}}
+</p>
+
+<p class="text-center">
+    <b>
+  We appreciate your business! If you have any questions, please email
+    <a
+        href="mailto:orders@example.com"
+        style="color: white;"
+    >
+        orders@example.com
+    </a>
+</p>
+
+</b>
+
+<p class="text-center">
+  <a href="/" class="btn btn-dark btn-lg">Go Back Home</a>
+</p>

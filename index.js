@@ -23,6 +23,39 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/success", async (req, res) => {
+  const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
+
+  const customer = await stripe.customers.retrieve(session.customer);
+  console.log(customer);
+
+  res.render("success", { customer: customer });
+});
+
+app.post("/charge", async (req, res) => {
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    line_items: [
+      {
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: "ebook",
+          },
+          unit_amount: 2500,
+        },
+        quantity: 1,
+      },
+    ],
+    mode: "payment",
+    success_url:
+      "http://localhost:5000/success?session_id={CHECKOUT_SESSION_ID}",
+    cancel_url: "http://localhost/success",
+  });
+
+  res.redirect(303, session.url);
+});
+
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
