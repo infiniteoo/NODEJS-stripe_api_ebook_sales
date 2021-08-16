@@ -13,6 +13,9 @@ app.set("view engine", "handlebars");
 // express json middleware
 app.use(express.json({ extended: false }));
 
+// set static folder
+app.use(express.static(__dirname + "/public"));
+
 const port = process.env.PORT || 5000;
 
 // create index get route
