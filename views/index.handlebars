@@ -19,19 +19,21 @@
         >
         </script>
 
-        <script>
-          document.getElementsByClassName('stripe-button-el')[0].style.display =
-          'none';
-        </script>
-        <button
-          type="submit"
-          class="btn btn-outline-dark text-white btn-lg"
-        >Purchase for $25</button>
+        
+        
 
       </form> }}
       <form action="/charge" method="POST">
-        <button type="submit">Checkout</button>
+        <button type="submit" class="stripe-button">Checkout</button>
+        <button
+          type="submit"
+          class="btn btn-outline-dark text-white btn-lg stripe-button"
+        >Purchase for $25</button>
       </form>
+      <script>
+        document.getElementsByClassName('stripe-button')[0].style.display =
+        'none';
+      </script>
     </div>
     <div class="col-md-6">
       <img src="/img/book.png" alt="" class="img-fluid" />
