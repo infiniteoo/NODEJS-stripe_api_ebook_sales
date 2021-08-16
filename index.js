@@ -16,6 +16,10 @@ app.use(express.json({ extended: false }));
 // set static folder
 app.use(express.static(__dirname + "/public"));
 
+const successURL =
+  process.env.SUCCESS_URL ||
+  "http://localhost:5000/success?session_id={CHECKOUT_SESSION_ID}";
+
 const port = process.env.PORT || 5000;
 
 // create index get route
@@ -58,8 +62,7 @@ app.post("/charge", async (req, res) => {
       },
     ],
     mode: "payment",
-    success_url:
-      "http://localhost:5000/success?session_id={CHECKOUT_SESSION_ID}",
+    success_url: successURL,
     cancel_url: "http://localhost/success",
   });
 
