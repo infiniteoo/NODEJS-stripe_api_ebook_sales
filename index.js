@@ -29,7 +29,17 @@ app.get("/success", async (req, res) => {
   const customer = await stripe.customers.retrieve(session.customer);
   console.log(customer);
 
-  res.render("success", { customer: customer });
+  let dollars = session.amount_total / 100;
+  dollars = dollars.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
+  res.render("success", {
+    customer: customer,
+    session: session,
+    dollars: dollars,
+  });
 });
 
 app.post("/charge", async (req, res) => {
