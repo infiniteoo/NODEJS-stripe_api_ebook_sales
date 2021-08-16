@@ -5,6 +5,21 @@
         Web Development E-Book
       </h1>
       <p class="lead">Learn web development front to back</p>
+      <form action="/charge" method="POST">
+        <script
+          src="https://checkout.stripe.com/checkout.js"
+          class="stripe-button"
+          data-key="pk_test_51Ib6slLTgyjt8Gz7qNxryLOuyjIRopDPfZu3pcJ4XZpYOJXeNZDmlY9AxVwnuwhjRdw5UTtwWcLU35y38XvGi4Zd00r7IDYqwb"
+          data-amount="2500"
+          data-name="Web Development EBook"
+          data-description="Ebook written by Troy Dorman"
+          data-zip-code="true"
+          data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+          data-locale="auto"
+        >
+        </script>
+        
+      </form>
     </div>
     <div class="col-md-6">
       <img src="/img/book.png" alt="" class="img-fluid" />
